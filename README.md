@@ -1,30 +1,36 @@
 # PY-OS Cloud ☁️
 
-PY-OS Cloud is a cross-platform desktop project with a shared data format and core.
+PY-OS Cloud is a browser-based desktop environment powered by a small Python server. It is designed so a future Android APK can share the same core and data format.
 
-The project is being built in stages so the Android APK and browser edition can share the same settings, app data, and portable backups.
+## Current version
 
-## Current status
+**0.2.0 — browser desktop**
 
-**0.1.0 — shared-core preview**
+The browser edition now includes:
 
-- JSON-backed shared state store.
-- Portable `.pycloud` export and import.
-- Local browser interface served by Python.
-- Browser controls for changing the theme and importing/exporting backups.
-- Python standard library only; no third-party packages required.
+- Desktop workspace with app icons.
+- Start menu and taskbar.
+- Movable, minimizable, maximizable, and closable app windows.
+- File Manager for PY-OS virtual text files.
+- Built-in browser window (some sites block being shown inside another page).
+- Notes app with automatic saving.
+- Calculator.
+- Dark and light themes.
+- Shared state saved locally by the Python server.
 
-The full window manager, taskbar, Start menu, file manager, and built-in browser are planned next. They are not implemented in this preview yet.
+This is an early desktop build. The File Manager manages PY-OS virtual files; it does not browse or modify Android's real storage.
 
 ## Run on Termux, Linux, or macOS
 
-From the repository directory:
+Clone the repository, then run:
 
 ```sh
+git clone https://github.com/zaydzaydfarhat-blip/py-os-cloud.git
+cd py-os-cloud
 python -m pyos_cloud
 ```
 
-Then open this address in your browser:
+Open this address in the browser on the same device:
 
 ```text
 http://127.0.0.1:8765
@@ -32,40 +38,39 @@ http://127.0.0.1:8765
 
 Stop the server with `Ctrl+C`.
 
-Python 3.10 or newer is recommended. The server binds to localhost by default, so it is only reachable from the same device. Do not bind it to a public network: authentication and HTTPS are not implemented yet.
+Python 3.10 or newer is recommended. The server binds to localhost by default. Keep this default: authentication and HTTPS are not implemented, so do not expose the server to the internet or an untrusted network.
 
-## Commands
+Choose another local port with:
 
 ```sh
-python -m pyos_cloud                 # start local web edition
-python -m pyos_cloud --port 9000     # choose another local port
+python -m pyos_cloud --port 9000
 ```
 
-## Data and backups
+## Saved data
 
-State is stored at `~/.py-os-cloud/state.json`. You can override the location with:
+PY-OS Cloud stores its shared state at `~/.py-os-cloud/state.json`. You can choose another folder with:
 
 ```sh
 export PYOS_CLOUD_HOME="$HOME/my-pyos-data"
 ```
 
-The browser interface has **Export .pycloud** and **Import .pycloud** controls. A `.pycloud` file is a ZIP archive containing a versioned `manifest.json` and `state.json`. Import validates the format and state schema before saving. Backups currently contain app state only; user documents and browser history are not included yet.
+## Planned for later
 
-## Run tests
+- **Backup and import:** portable `.pycloud` export/import.
+- **Android APK:** a native app wrapper using the same desktop and shared data format.
+- More desktop apps and deeper Android integration.
+
+The backup format module is currently not exposed in the desktop interface or HTTP API. The APK is not built yet.
+
+## Tests
 
 ```sh
 python -m unittest discover -s tests -v
 ```
 
-## Planned architecture
+## Project layout
 
-- `pyos_cloud/` — shared Python core and backup format.
-- `web/` — browser edition.
-- `android/` — future Android APK wrapper.
+- `pyos_cloud/` — shared Python core and local server.
+- `web/` — browser desktop.
+- `android/` — planned Android app.
 - `tests/` — core tests.
-
-The APK and web edition will use the same versioned state schema and `.pycloud` format. The Android app is a future target; this repository does not build an APK yet.
-
-## Safety
-
-The local server has no login system yet. Keep the default localhost binding. Do not expose the server to the internet or an untrusted network.
