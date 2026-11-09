@@ -4,7 +4,7 @@ PY-OS Cloud is a browser-based desktop environment powered by a small Python ser
 
 ## Current version
 
-**0.2.0 — browser desktop**
+**0.3.0 — touch and keyboard desktop**
 
 The browser edition now includes:
 
@@ -15,7 +15,7 @@ The browser edition now includes:
 - Built-in browser window (some sites block being shown inside another page).
 - Notes app with automatic saving.
 - Calculator.
-- Dark and light themes.
+- Dark and light themes.\n- Touch-friendly controls and window dragging on Android tablets and phones.\n- Mouse support for desktop browsers.\n- Keyboard shortcuts and calculator keyboard input.
 - Shared state saved locally by the Python server.
 
 This is an early desktop build. The File Manager manages PY-OS virtual files; it does not browse or modify Android's real storage.
