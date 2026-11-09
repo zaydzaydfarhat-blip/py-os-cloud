@@ -60,7 +60,7 @@ export PYOS_CLOUD_HOME="$HOME/my-pyos-data"
 - **APK builds:** GitHub Actions builds a debug APK and publishes it as a workflow artifact. Version tags beginning with `v` also attach the APK to a GitHub Release.
 - More desktop apps and deeper Android integration.
 
-The first Android edition includes a native launcher, Python-inspired command shell, notes, calculator, browser hand-off, games, file picker, and portable notes backup/import. The shell is not yet a full Python interpreter. See [android/README.md](android/README.md) for build instructions.
+The Android APK now embeds the same `web/index.html` desktop UI in a WebView, including the desktop icons, Start menu, taskbar, app windows, themes, and mini arcade. Android saves its PY-OS state locally in WebView storage. The APK also uses a custom PY-OS launcher icon. See [android/README.md](android/README.md) for build instructions.
 
 ## Tests
 
