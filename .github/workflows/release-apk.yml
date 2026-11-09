@@ -17,10 +17,10 @@ jobs:
   build-and-release:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out release source
+      - name: Check out current Android source
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.release.tag_name || inputs.tag }}
+          ref: main
 
       - name: Set up Java
         uses: actions/setup-java@v4
