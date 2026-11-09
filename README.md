@@ -1,6 +1,6 @@
 # PY-OS Cloud ☁️
 
-PY-OS Cloud is a browser-based desktop environment powered by a small Python server. It is designed so a future Android APK can share the same core and data format.
+PY-OS Cloud is a browser-based desktop environment with an official Android APK edition.
 
 ## Current version
 
@@ -53,11 +53,15 @@ PY-OS Cloud stores its shared state at `~/.py-os-cloud/state.json`. You can choo
 export PYOS_CLOUD_HOME="$HOME/my-pyos-data"
 ```
 
+## Official Android app
+
+**The official PY-OS Cloud Android APK has been added.** The Android app is available in the project's GitHub Releases. It embeds the same desktop interface as the web version.
+
+GitHub Actions can build a debug APK as a workflow artifact. Version tags beginning with `v` also attach the APK to a GitHub Release.
+
 ## Planned for later
 
-- **Backup and import:** portable `.pycloud` export/import.
-- **Native Android app:** a Java-based APK project is now in `android/`.
-- **APK builds:** GitHub Actions builds a debug APK and publishes it as a workflow artifact. Version tags beginning with `v` also attach the APK to a GitHub Release.
+- Backup and import: portable `.pycloud` export/import.
 - More desktop apps and deeper Android integration.
 
 The Android APK now embeds the same `web/index.html` desktop UI in a WebView, including the desktop icons, Start menu, taskbar, app windows, themes, and mini arcade. Android saves its PY-OS state locally in WebView storage. The APK also uses a custom PY-OS launcher icon. See [android/README.md](android/README.md) for build instructions.
@@ -72,5 +76,5 @@ python -m unittest discover -s tests -v
 
 - `pyos_cloud/` — shared Python core and local server.
 - `web/` — browser desktop.
-- `android/` — planned Android app.
+- `android/` — official Android APK project.
 - `tests/` — core tests.
