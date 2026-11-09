@@ -17,7 +17,7 @@ def make_handler():
     store = StateStore()
 
     class Handler(BaseHTTPRequestHandler):
-        server_version = "PYOSCloud/0.1"
+        server_version = "PYOSCloud/0.2"
 
         def log_message(self, fmt, *args):
             print("PY-OS Cloud:", fmt % args)
