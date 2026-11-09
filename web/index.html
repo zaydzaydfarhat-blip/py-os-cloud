@@ -10,8 +10,8 @@
 .desktop-context-menu{position:absolute;z-index:2200;min-width:196px;padding:7px;background:#101d30f5;border:1px solid #ffffff35;border-radius:12px;box-shadow:0 14px 40px #0009;backdrop-filter:blur(16px);display:grid;gap:4px}
 .desktop-context-menu button{width:100%;text-align:left;border:0;background:transparent;padding:10px 12px;min-height:42px}
 .desktop-context-menu button:hover{background:#ffffff18}
-.game-stage,.game-stage *{-webkit-touch-callout:none}
-.game-stage button{-webkit-user-select:none;user-select:none;touch-action:manipulation}
+#gameStage,#gameStage *{-webkit-touch-callout:none}
+#gameStage button{-webkit-user-select:none;user-select:none;touch-action:manipulation}
 
 /* Touch, mouse, keyboard, and accessibility improvements */
 button{min-height:40px;touch-action:manipulation;-webkit-tap-highlight-color:transparent}.titlebar{touch-action:none;cursor:grab}.titlebar:active{cursor:grabbing}.desktop-icon,.app-launch{touch-action:manipulation}.window{touch-action:pan-y}.window-body{overscroll-behavior:contain}.window-body input,.window-body textarea{font-size:16px;min-height:42px}.win-controls button{min-width:42px;min-height:38px}.taskbar{padding-bottom:max(6px,env(safe-area-inset-bottom))}.start{max-height:calc(100dvh - 75px);overflow:auto}.desktop-icon:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid #9cc7ff;outline-offset:2px}
@@ -54,7 +54,7 @@ desktop.addEventListener('pointerdown',e=>{
 desktop.addEventListener('pointermove',e=>{if(desktopHoldStart&&Math.hypot(e.clientX-desktopHoldStart.x,e.clientY-desktopHoldStart.y)>12){clearTimeout(desktopHoldTimer);desktopHoldStart=null}});
 for(const eventName of ['pointerup','pointercancel'])desktop.addEventListener(eventName,()=>{clearTimeout(desktopHoldTimer);desktopHoldStart=null});
 desktop.addEventListener('contextmenu',e=>{
- if(e.target.closest('.game-stage,.game-controls')){e.preventDefault();return}
+ if(e.target.closest('#gameStage,.game-controls')){e.preventDefault();return}
  if(isDesktopBlankTarget(e.target)){e.preventDefault();showDesktopMenu(e.clientX,e.clientY)}
 });
 document.addEventListener('pointerdown',e=>{if(desktopMenu&&!desktopMenu.contains(e.target))closeDesktopMenu()});
