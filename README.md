@@ -12,7 +12,6 @@ The browser edition now includes:
 - Start menu and taskbar.
 - Movable, minimizable, maximizable, and closable app windows.
 - File Manager for PY-OS virtual text files.
-- Built-in browser window (some sites block being shown inside another page).
 - Notes app with automatic saving.
 - Calculator.
 - Dark and light themes.\n- Touch-friendly controls and window dragging on Android tablets and phones.\n- Mouse support for desktop browsers.\n- Keyboard shortcuts and calculator keyboard input.
