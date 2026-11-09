@@ -56,10 +56,11 @@ export PYOS_CLOUD_HOME="$HOME/my-pyos-data"
 ## Planned for later
 
 - **Backup and import:** portable `.pycloud` export/import.
-- **Android APK:** a native app wrapper using the same desktop and shared data format.
+- **Native Android app:** a Java-based APK project is now in `android/`.
+- **APK builds:** GitHub Actions builds a debug APK and publishes it as a workflow artifact. Version tags beginning with `v` also attach the APK to a GitHub Release.
 - More desktop apps and deeper Android integration.
 
-The backup format module is currently not exposed in the desktop interface or HTTP API. The APK is not built yet.
+The first Android edition includes a native launcher, Python-inspired command shell, notes, calculator, browser hand-off, games, file picker, and portable notes backup/import. The shell is not yet a full Python interpreter. See [android/README.md](android/README.md) for build instructions.
 
 ## Tests
 
