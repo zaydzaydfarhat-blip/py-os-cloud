@@ -7,7 +7,6 @@ from http.server import BaseHTTPRequestHandler
 from pathlib import Path
 from urllib.parse import urlparse
 
-from .backup import export_backup, import_backup
 from .store import StateStore
 
 WEB_ROOT = Path(__file__).resolve().parent.parent / "web"
@@ -65,19 +64,6 @@ def make_handler():
                 body = self.read_body()
                 if path == "/api/state":
                     state = json.loads(body.decode("utf-8"))
-                    self.send_json(200, store.save(state))
-                elif path == "/api/export":
-                    state = store.load()
-                    backup = export_backup(state)
-                    self.send_response(200)
-                    self.send_header("Content-Type", "application/octet-stream")
-                    self.send_header("Content-Disposition", 'attachment; filename="py-os-cloud.pycloud"')
-                    self.send_header("Content-Length", str(len(backup)))
-                    self.send_header("X-Content-Type-Options", "nosniff")
-                    self.end_headers()
-                    self.wfile.write(backup)
-                elif path == "/api/import":
-                    state = import_backup(body)
                     self.send_json(200, store.save(state))
                 else:
                     self.send_json(404, {"error": "Not found"})
