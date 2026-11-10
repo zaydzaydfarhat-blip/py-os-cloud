@@ -15,7 +15,8 @@ The browser edition now includes:
 - Notes app with automatic saving.
 - Calculator.
 - Dark and light themes.\n- Touch-friendly controls and window dragging on Android tablets and phones.\n- Mouse support for desktop browsers.\n- Keyboard shortcuts and calculator keyboard input.
-- Shared state saved locally by the Python server.
+- Shared state saved by the Python server, with browser-local fallback when offline or hosted as a static site.
+- Portable `.pycloud` backup export/import for notes, virtual files, and settings.
 
 This is an early desktop build. The File Manager manages PY-OS virtual files; it does not browse or modify Android's real storage.
 
@@ -61,7 +62,6 @@ GitHub Actions can build a debug APK as a workflow artifact. Version tags beginn
 
 ## Planned for later
 
-- Backup and import: portable `.pycloud` export/import.
 - More desktop apps and deeper Android integration.
 
 The Android APK now embeds the same `web/index.html` desktop UI in a WebView, including the desktop icons, Start menu, taskbar, app windows, themes, and mini arcade. Android saves its PY-OS state locally in WebView storage. The APK also uses a custom PY-OS launcher icon. See [android/README.md](android/README.md) for build instructions.
