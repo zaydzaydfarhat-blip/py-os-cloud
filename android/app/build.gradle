@@ -3,17 +3,24 @@ plugins {
     id 'com.chaquo.python'
 }
 
+chaquopy {
+    defaultConfig {
+        version = '3.11'
+    }
+}
+
 android {
     namespace 'com.pyos.cloud'
     compileSdk 35
 
     defaultConfig {
         applicationId 'com.pyos.cloud'
-        minSdk 23
+        minSdk 24
+        ndk { abiFilters 'arm64-v8a' }
+
         targetSdk 35
         versionCode 2
         versionName '0.6.0'
-        python { version '3.11' }
     }
 
     compileOptions {
