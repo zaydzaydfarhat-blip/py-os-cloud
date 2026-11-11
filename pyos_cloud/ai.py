@@ -14,12 +14,12 @@ def create_reply(messages: list[dict]) -> str:
     if not api_key:
         raise RuntimeError("AI is not configured. Set OPENAI_API_KEY on the PY-OS Cloud server.")
     clean = []
-    for item in messages[-20:]:
+    for item in messages[-12:]:
         if not isinstance(item, dict) or item.get("role") not in ("user", "assistant"):
             continue
         content = item.get("content")
         if isinstance(content, str) and content.strip():
-            clean.append(f"{item['role'].upper()}: {content.strip()[:4000]}")
+            clean.append(f"{item['role'].upper()}: {content.strip()[:2000]}")
     if not clean or not any(m.startswith("USER:") for m in clean):
         raise ValueError("Send a message first.")
     payload = {
