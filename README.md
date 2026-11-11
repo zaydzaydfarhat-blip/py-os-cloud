@@ -4,7 +4,7 @@ PY-OS Cloud is a browser-based desktop environment with an official Android APK 
 
 ## Current version
 
-**0.3.0 — touch and keyboard desktop**
+**0.4.0 — shared cloud sync and AI assistant**
 
 The browser edition now includes:
 
@@ -38,6 +38,28 @@ http://127.0.0.1:8765
 
 Stop the server with `Ctrl+C`.
 
+## AI assistant
+
+PY-OS AI uses the OpenAI Responses API through the Python server. The API key stays on the server and is never placed in the browser or APK.
+
+Set the key in the server environment before starting PY-OS Cloud:
+
+```sh
+export OPENAI_API_KEY="your-api-key"
+export OPENAI_MODEL="gpt-5.5"
+python -m pyos_cloud
+```
+
+Keep the key private. Do not paste it into the app, commit it to GitHub, or put it in the APK. API usage may incur charges, so have a parent or guardian manage the API account and spending limits. Without the server key, the desktop and offline apps still work; only AI chat is unavailable.
+
+## Connect web and Android
+
+1. Start the Python server on the device that stores your PY-OS data.
+2. In PY-OS, open **Settings** and enter the server URL under **Cloud server URL**.
+3. Use the same URL in the web edition and APK. Both editions will then read and save to the same server state.
+4. If no server is connected, each edition keeps its own local data. `.pycloud` export/import remains available for manual transfers.
+
+The server binds to localhost by default. It has no user accounts or sign-in protection yet; keep it on the same device and do not expose it to the public internet or an untrusted network.
 Python 3.10 or newer is recommended. The server binds to localhost by default. Keep this default: authentication and HTTPS are not implemented, so do not expose the server to the internet or an untrusted network.
 
 Choose another local port with:
@@ -59,12 +81,6 @@ export PYOS_CLOUD_HOME="$HOME/my-pyos-data"
 **The official PY-OS Cloud Android APK has been added.** The Android app is available in the project's GitHub Releases. It embeds the same desktop interface as the web version.
 
 GitHub Actions can build a debug APK as a workflow artifact. Version tags beginning with `v` also attach the APK to a GitHub Release.
-
-## Planned for later
-
-- More desktop apps and deeper Android integration.
-
-The Android APK now embeds the same `web/index.html` desktop UI in a WebView, including the desktop icons, Start menu, taskbar, app windows, themes, and mini arcade. Android saves its PY-OS state locally in WebView storage. The APK also uses a custom PY-OS launcher icon. See [android/README.md](android/README.md) for build instructions.
 
 ## Tests
 
