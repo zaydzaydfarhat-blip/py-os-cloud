@@ -4,7 +4,7 @@ PY-OS Cloud is a browser-based desktop environment with an official Android APK 
 
 ## Current version
 
-**0.4.0 — shared cloud sync and AI assistant**
+**0.5.0 — shared cloud sync and AI assistant**
 
 The browser edition now includes:
 
