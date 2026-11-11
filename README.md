@@ -60,7 +60,8 @@ Keep the key private. Do not paste it into the app, commit it to GitHub, or put 
 4. If no server is connected, each edition keeps its own local data. `.pycloud` export/import remains available for manual transfers.
 
 The server binds to localhost by default. It has no user accounts or sign-in protection yet; keep it on the same device and do not expose it to the public internet or an untrusted network.
-Python 3.10 or newer is recommended. The server binds to localhost by default. Keep this default: authentication and HTTPS are not implemented, so do not expose the server to the internet or an untrusted network.
+
+Python 3.10 or newer is recommended.
 
 Choose another local port with:
 
