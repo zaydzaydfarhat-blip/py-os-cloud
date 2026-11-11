@@ -14,7 +14,10 @@ The browser edition now includes:
 - File Manager for PY-OS virtual text files.
 - Notes app with automatic saving.
 - Calculator.
-- Dark and light themes.\n- Touch-friendly controls and window dragging on Android tablets and phones.\n- Mouse support for desktop browsers.\n- Keyboard shortcuts and calculator keyboard input.
+- Dark and light themes.
+- Touch-friendly controls and window dragging on Android tablets and phones.
+- Mouse support for desktop browsers.
+- Keyboard shortcuts and calculator keyboard input.
 - Shared state saved by the Python server, with browser-local fallback when offline or hosted as a static site.
 - Portable `.pycloud` backup export/import for notes, virtual files, and settings.
 
