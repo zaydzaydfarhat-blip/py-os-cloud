@@ -8,6 +8,7 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 from .store import StateStore
+from .ai import ai_status, create_reply
 
 WEB_ROOT = Path(__file__).resolve().parent.parent / "web"
 MAX_REQUEST_BYTES = 20 * 1024 * 1024
@@ -42,6 +43,9 @@ def make_handler():
 
         def do_GET(self):
             path = urlparse(self.path).path
+            if path == "/api/ai/status":
+                self.send_json(200, ai_status())
+                return
             if path == "/api/state":
                 try:
                     self.send_json(200, store.load())
@@ -65,6 +69,12 @@ def make_handler():
                 if path == "/api/state":
                     state = json.loads(body.decode("utf-8"))
                     self.send_json(200, store.save(state))
+                elif path == "/api/ai":
+                    payload = json.loads(body.decode("utf-8"))
+                    messages = payload.get("messages", []) if isinstance(payload, dict) else []
+                    if not isinstance(messages, list):
+                        raise ValueError("Messages must be an array.")
+                    self.send_json(200, {"reply": create_reply(messages)})
                 else:
                     self.send_json(404, {"error": "Not found"})
             except (ValueError, UnicodeDecodeError, json.JSONDecodeError) as exc:
