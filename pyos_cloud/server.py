@@ -29,6 +29,9 @@ def make_handler():
             self.send_header("Content-Length", str(len(content)))
             self.send_header("X-Content-Type-Options", "nosniff")
             self.send_header("Cache-Control", "no-store")
+            self.send_header("Access-Control-Allow-Origin", "*")
+            self.send_header("Access-Control-Allow-Headers", "Content-Type")
+            self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
             self.end_headers()
             self.wfile.write(content)
 
@@ -40,6 +43,9 @@ def make_handler():
             if length < 0 or length > MAX_REQUEST_BYTES:
                 raise ValueError("Request is too large.")
             return self.rfile.read(length)
+
+        def do_OPTIONS(self):
+            self.send_bytes(204, b"", "text/plain; charset=utf-8")
 
         def do_GET(self):
             path = urlparse(self.path).path
